@@ -1,5 +1,8 @@
 package ru.sbt.jschool.session7.HomeJob;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Problem2 implements Runnable {
@@ -9,7 +12,13 @@ public class Problem2 implements Runnable {
     private static int threadsCount;
 
     public static void main(String[] args) {
-        threadsCount = 4;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            threadsCount = Integer.parseInt(reader.readLine());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < threadsCount; i++) {
             new Thread(new Problem2()).start();
         }
