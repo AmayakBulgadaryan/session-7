@@ -31,5 +31,11 @@ public class Producer implements Runnable {
 
     private void generateJob() {
         //TODO: здесь нужно сгенерировать новое задание!
+        synchronized (store) {
+            store.store[store.cnt] = new Job(i);
+            store.cnt++;
+            i++;
+            store.notifyAll();
+        }
     }
 }
