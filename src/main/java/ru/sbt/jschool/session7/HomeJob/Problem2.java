@@ -15,12 +15,12 @@ public class Problem2 implements Runnable {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             threadsCount = Integer.parseInt(reader.readLine());
+            for (int i = 0; i < threadsCount; i++) {
+                new Thread(new Problem2()).start();
+            }
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
-        for (int i = 0; i < threadsCount; i++) {
-            new Thread(new Problem2()).start();
         }
     }
 
